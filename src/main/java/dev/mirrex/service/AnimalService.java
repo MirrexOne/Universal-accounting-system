@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class AnimalService {
 
-    public List<Animal> loadAnimals(String filename, Map<String, List<String>> properties) throws IOException {
-        List<String> lines = FileUtil.readFile(filename);
+    public List<Animal> loadAnimals(String filePath, Map<String, List<String>> properties) throws IOException {
+        List<String> lines = FileUtil.readFile(filePath);
         List<String> propertyNames = new ArrayList<>(properties.keySet());
         
         return lines.stream()

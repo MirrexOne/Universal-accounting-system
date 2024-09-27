@@ -11,8 +11,8 @@ import java.util.LinkedHashMap;
 
 public class PropertyService {
 
-    public Map<String, List<String>> loadProperties(String filename) throws IOException {
-        List<String> lines = FileUtil.readFile(filename);
+    public Map<String, List<String>> loadProperties(String filePath) throws IOException {
+        List<String> lines = FileUtil.readFile(filePath);
         return lines.stream()
                 .map(line -> line.split(": "))
                 .collect(Collectors.toMap(

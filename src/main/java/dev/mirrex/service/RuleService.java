@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class RuleService {
 
-    public List<Rule> loadRules(String filename) throws IOException {
-        List<String> lines = FileUtil.readFile(filename);
+    public List<Rule> loadRules(String filePath) throws IOException {
+        List<String> lines = FileUtil.readFile(filePath);
         return lines.stream()
                 .map(line -> {
                     String[] parts = line.split(": ", 2);
