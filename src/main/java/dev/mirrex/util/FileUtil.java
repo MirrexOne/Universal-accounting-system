@@ -10,7 +10,7 @@ public class FileUtil {
     public static List<String> readFile(String filePath) throws IOException {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
         if (!Files.exists(path)) {
-            throw new IOException("File not found: " + path);
+            throw new IOException("File not found or invalid file name: " + path);
         }
         return Files.readAllLines(path);
     }

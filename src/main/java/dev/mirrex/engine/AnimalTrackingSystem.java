@@ -38,14 +38,14 @@ public class AnimalTrackingSystem {
 
             for (Rule rule : rules) {
                 long count = animals.stream().filter(rule.getPredicate()).count();
-                System.out.println(rule.getName() + ": " + count);
+                System.out.printf("\n%s: %d%n", rule.getName(), count);
 
                 System.out.println("  Matching animals:");
                 animals.stream().filter(rule.getPredicate())
-                        .forEach(animal -> System.out.println("    " + animal));
+                        .forEach(animal -> System.out.printf("    %s%n", animal));
             }
         } catch (IOException e) {
-            System.err.println("Error reading files: " + e.getMessage());
+            System.err.printf("Error reading files: %s%n", e.getMessage());
         }
     }
 }
