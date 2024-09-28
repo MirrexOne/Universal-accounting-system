@@ -13,10 +13,10 @@ import java.util.Map;
 public class AnimalTrackingSystem {
 
     private final PropertyService propertyService;
-
     private final AnimalService animalService;
-
     private final RuleService ruleService;
+    private List<Animal> animals;
+    private List<Rule> rules;
 
     public AnimalTrackingSystem() {
         this.propertyService = new PropertyService();
@@ -24,28 +24,17 @@ public class AnimalTrackingSystem {
         this.ruleService = new RuleService();
     }
 
-    public void run(String animalsFile, String propertiesFile, String rulesFile) {
-        try {
-            Map<String, List<String>> properties = propertyService.loadProperties(propertiesFile);
-            List<Animal> animals = animalService.loadAnimals(animalsFile, properties);
-            List<Rule> rules = ruleService.loadRules(rulesFile);
+    public void run(String animalsFile, String propertiesFile, String rulesFile) throws IOException {
+        Map<String, List<String>> properties = propertyService.loadProperties(propertiesFile);
+        animals = animalService.loadAnimals(animalsFile, properties);
+        rules = ruleService.loadRules(rulesFile);
+    }
 
-            System.out.println("Loaded animals:");
-            animals.forEach(System.out::println);
+    public List<Animal> getAnimals() {
+        return animals;
+    }
 
-            System.out.println("\nLoaded rules:");
-            rules.forEach(System.out::println);
-
-            for (Rule rule : rules) {
-                long count = animals.stream().filter(rule.getPredicate()).count();
-                System.out.printf("\n%s: %d%n", rule.getName(), count);
-
-                System.out.println("  Matching animals:");
-                animals.stream().filter(rule.getPredicate())
-                        .forEach(animal -> System.out.printf("    %s%n", animal));
-            }
-        } catch (IOException e) {
-            System.err.printf("Error reading files: %s%n", e.getMessage());
-        }
+    public List<Rule> getRules() {
+        return rules;
     }
 }
