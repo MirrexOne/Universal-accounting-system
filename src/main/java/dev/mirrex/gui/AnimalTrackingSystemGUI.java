@@ -47,7 +47,7 @@ public class AnimalTrackingSystemGUI extends JFrame {
         inputPanel.add(loadButton);
 
         JButton clearButton = new JButton("Clear Results");
-        clearButton.addActionListener(e -> clearResults());
+        clearButton.addActionListener(this::clearAction);
         inputPanel.add(clearButton);
 
         add(inputPanel, BorderLayout.NORTH);
@@ -103,5 +103,9 @@ public class AnimalTrackingSystemGUI extends JFrame {
             AnimalTrackingSystemGUI gui = new AnimalTrackingSystemGUI();
             gui.setVisible(true);
         });
+    }
+
+    private void clearAction(ActionEvent e) {
+        clearResults();
     }
 }

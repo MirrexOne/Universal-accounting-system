@@ -13,9 +13,13 @@ import java.util.Map;
 public class AnimalTrackingSystem {
 
     private final PropertyService propertyService;
+
     private final AnimalService animalService;
+
     private final RuleService ruleService;
+
     private List<Animal> animals;
+
     private List<Rule> rules;
 
     public AnimalTrackingSystem() {
