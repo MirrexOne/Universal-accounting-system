@@ -25,7 +25,7 @@ public class AnimalTrackingSystemGUI extends JFrame {
     private void initializeUI() {
         setTitle("Animal Tracking System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1500, 1000);
+        setSize(1000, 700);
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
