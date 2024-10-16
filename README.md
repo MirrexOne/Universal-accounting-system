@@ -1,1 +1,1 @@
-# Animal Tracking System with simple GUI
+# Universal accounting system with simple GUI
